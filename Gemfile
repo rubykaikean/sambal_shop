@@ -16,6 +16,7 @@ gem 'spree_gateway', '~> 3.9'
 gem 'spree_i18n', '~> 5.0'
 gem 'sassc', github: 'sass/sassc-ruby', branch: 'master'
 
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
