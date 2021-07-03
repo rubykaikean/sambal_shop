@@ -10,8 +10,8 @@ gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 
-gem 'spree'
-gem 'spree_auth_devise', '~> 4.3'
+gem 'spree_api'
+# gem 'spree_auth_devise', '~> 4.3'
 gem 'spree_gateway', '~> 3.9'
 gem 'spree_i18n', '~> 5.0'
 gem 'sassc', github: 'sass/sassc-ruby', branch: 'master'
@@ -62,3 +62,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+  root 'api/v1/authentication#authenticate'
+  delete 'logout', to: 'authentication#logout'

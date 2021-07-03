@@ -1,10 +1,10 @@
-module Spree
-  module Api
-    module V1
-      class UsersController < Spree::Api::BaseController
+class Spree::Api::V1::UsersController < Spree::Api::BaseController
 
+  # skip_before_action :authenticate_user, except: [:index]
 
-      end
-    end
+  def index
+    company_id = request.headers['Company-Id']
+    render json: {company_id: company_id}
   end
+
 end

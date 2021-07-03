@@ -9,4 +9,20 @@ Rails.application.routes.draw do
   # the default of "spree".
   mount Spree::Core::Engine, at: '/'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :spree do
+    namespace :api, defaults: { format: 'json' } do
+      namespace :v1 do
+        # Our new route goes here!
+        resources :sales, only: [:index]
+
+        resources :companies, only: [:index, :show]
+
+        resources :users, only: [:index]
+      end
+    end
+  end
+
+  root 'spree/api/v1/authentication#authenticate'
+
 end

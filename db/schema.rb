@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_065307) do
+ActiveRecord::Schema.define(version: 2021_07_01_140902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 2021_06_24_065307) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "api_keys", force: :cascade do |t|
+    t.string "app_name"
+    t.string "token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "companies", force: :cascade do |t|
@@ -1189,6 +1196,22 @@ ActiveRecord::Schema.define(version: 2021_06_24_065307) do
     t.string "kind", default: "state"
     t.index ["default_tax"], name: "index_spree_zones_on_default_tax"
     t.index ["kind"], name: "index_spree_zones_on_kind"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "mobile_contact_number"
+    t.string "identification_number"
+    t.integer "role_id"
+    t.integer "status_id"
+    t.string "display_name"
+    t.integer "company_id"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "spree_api_key", limit: 48
+    t.integer "ship_address_id"
+    t.integer "bill_address_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
