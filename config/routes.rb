@@ -16,13 +16,13 @@ Rails.application.routes.draw do
         # Our new route goes here!
         resources :sales, only: [:index]
 
-        resources :companies, only: [:index, :show]
+        resources :companies, except: [:destroy]
 
         resources :users, only: [:index]
       end
     end
   end
 
-  root 'spree/api/v1/authentication#authenticate'
+  # root 'spree/api/v1/authentication#authenticate'
 
 end
